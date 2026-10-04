@@ -539,12 +539,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Checkout: paste your real 2Checkout buy link below
-        const CHECKOUT_URL = "PASTE_YOUR_2CHECKOUT_BUY_LINK_HERE";
-        document.querySelectorAll('[data-checkout]').forEach(a => {
-            if (CHECKOUT_URL.startsWith('http')) { a.href = CHECKOUT_URL; }
-            else { a.addEventListener('click', e => { e.preventDefault(); alert('Checkout is not connected yet.'); }); }
-        });
+  
     </script>
 </body>
 </html>
