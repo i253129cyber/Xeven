@@ -550,5 +550,47 @@
 
 
     </script>
+
+
+
+    <script>
+    // Collapsible sections: Features, Sample, How It Works
+    ['features', 'sample', 'how-it-works'].forEach(function (id) {
+        var section = document.getElementById(id);
+        if (!section) return;
+        var container = section.firstElementChild;
+        var header = container.firstElementChild;
+
+        // Wrap everything below the heading + sub-line
+        var wrap = document.createElement('div');
+        wrap.style.display = 'none';
+        wrap.style.marginTop = '2rem';
+        while (header.nextSibling) wrap.appendChild(header.nextSibling);
+
+        // Tighten spacing under the sub-line since the cards are hidden
+        header.style.marginBottom = '1.5rem';
+
+        // Arrow button
+        var btnBox = document.createElement('div');
+        btnBox.style.textAlign = 'center';
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Show or hide section content');
+        btn.className = 'w-12 h-12 rounded-full bg-xevenTeal text-white shadow-md hover:bg-xevenTealHover transition-all focus:outline-none';
+        btn.innerHTML = '<i class="fa-solid fa-chevron-down" style="transition: transform .3s;"></i>';
+
+        btn.addEventListener('click', function () {
+            var open = btn.getAttribute('aria-expanded') === 'true';
+            wrap.style.display = open ? 'none' : 'block';
+            btn.setAttribute('aria-expanded', String(!open));
+            btn.firstChild.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+
+        btnBox.appendChild(btn);
+        container.appendChild(btnBox);
+        container.appendChild(wrap);
+    });
+</script>
 </body>
 </html>
